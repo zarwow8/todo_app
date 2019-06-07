@@ -1,42 +1,44 @@
 import React from "react";
 import Task from "../components/Task";
+import { connect } from "react-redux";
+import { getTasks } from "../actions/getTasks";
+import { deleteTask } from "../actions/deleteTask";
 
-const Todo = () => {
-  const tasks = [
-    {
-      id: 1,
-      title: "Lorem ipsum",
-      desc: "Duis aute irure dolor in reprehenderit in voluptate velit"
-    },
-    {
-      id: 2,
-      title: "Lorem ipsum",
-      desc: "Duis aute irure dolor in reprehenderit in voluptate velit"
-    },
-    {
-      id: 3,
-      title: "Lorem ipsum",
-      desc: "Duis aute irure dolor in reprehenderit in voluptate velit"
-    },
-    {
-      id: 4,
-      title: "Lorem ipsum",
-      desc: "Duis aute irure dolor in reprehenderit in voluptate velit"
-    },
-    {
-      id: 5,
-      title: "Lorem ipsum",
-      desc: "Duis aute irure dolor in reprehenderit in voluptate velit"
+const Todo = ({ getTasks, tasks, isFetching, error, deleteTask }) => {
+  const renderTemplate = () => {
+    if (error) {
+      return <p>Во время запроса произошла ошибка</p>;
     }
-  ];
+    if (isFetching) {
+      return <p>Загрузка...</p>;
+    }
+
+    if (tasks.length > 0) {
+      return (
+        <ul>
+          {tasks.map(item => (
+            <Task key={item.id} taskItem={item} deleteTask={deleteTask} />
+          ))}
+        </ul>
+      );
+    }
+
+    return <p>Список заданий пуст</p>;
+  };
 
   return (
-    <ul>
-      {tasks.map(item => (
-        <Task key={item.id} taskItem={item} />
-      ))}
-    </ul>
+    <>
+      {renderTemplate()}
+      {tasks.length > 0 || <button onClick={getTasks}>Получить задагия</button>}
+    </>
   );
 };
 
-export default Todo;
+export default connect(
+  store => ({
+    tasks: store.todo.tasks,
+    isFetching: store.todo.isFetching,
+    error: store.error
+  }),
+  { getTasks, deleteTask }
+)(Todo);
