@@ -1,10 +1,10 @@
 import React from "react";
 
-const Task = props => {
+const Task = ({ taskItem }) => {
   return (
     <li>
-      <h1>Title task</h1>
-      <p>desc task</p>
+      <h1>{taskItem.title}</h1>
+      <p>{taskItem.desc}</p>
     </li>
   );
 };
