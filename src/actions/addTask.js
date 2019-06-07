@@ -1,9 +1,14 @@
+import {
+  ADD_TASKS_REQUEST,
+  ADD_TASKS_SUCCESS,
+  ADD_TASKS_FAILED
+} from "../reducers/todo";
+
 export const addTask = task => async dispatch => {
   try {
     dispatch({
-      type: "DEL_TASKS_REQUEST"
+      type: ADD_TASKS_REQUEST
     });
-
     const dataJson = JSON.stringify(task);
     const addReq = await fetch("http://localhost:3000/tasks", {
       method: "POST",
@@ -20,17 +25,15 @@ export const addTask = task => async dispatch => {
     setTimeout(
       () =>
         dispatch({
-          type: "GET_TASKS_SUCCESS",
+          type: ADD_TASKS_SUCCESS,
           payload: parsedData
         }),
-      2000
+      200
     );
   } catch (e) {
     dispatch({
-      type: "GET_TASKS_FAILED",
+      type: ADD_TASKS_FAILED,
       payload: e
     });
   }
-
-  return "done";
 };

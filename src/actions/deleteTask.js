@@ -1,6 +1,12 @@
+import {
+  DEL_TASKS_REQUEST,
+  DEL_TASKS_SUCCESS,
+  DEL_TASKS_FAILED
+} from "../reducers/todo";
+
 export const deleteTask = id => async dispatch => {
   dispatch({
-    type: "DEL_TASKS_REQUEST"
+    type: DEL_TASKS_REQUEST
   });
 
   try {
@@ -14,16 +20,15 @@ export const deleteTask = id => async dispatch => {
     setTimeout(
       () =>
         dispatch({
-          type: "DEL_TASKS_SUCCESS",
+          type: DEL_TASKS_SUCCESS,
           payload: parsedData
         }),
       200
     );
   } catch (e) {
     dispatch({
-      type: "DEL_TASKS_FAILED",
+      type: DEL_TASKS_FAILED,
       payload: e
     });
   }
-  return "done";
 };

@@ -1,14 +1,3 @@
 {
-  "tasks": [
-    {
-      "title": "sdfsdfsdf",
-      "desc": "sdfsdfsdf",
-      "id": 1
-    },
-    {
-      "title": "dfgdfgf",
-      "desc": "dfgdfg",
-      "id": 2
-    }
-  ]
+  "tasks": []
 }
