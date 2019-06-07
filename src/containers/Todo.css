@@ -1,0 +1,17 @@
+.list_tasks {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+.back {
+  border: 1px solid black;
+  width: 500px;
+  text-align: center;
+}
+.error {
+  color: red;
+}
+
+.loading {
+  color: green;
+}

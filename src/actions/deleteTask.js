@@ -10,10 +10,10 @@ export const deleteTask = id => async dispatch => {
   });
 
   try {
-    const delReq = await fetch(`http://localhost:3000/tasks/${id}`, {
+    const delReq = await fetch(`http://localhost:3001/tasks/${id}`, {
       method: "DELETE"
     });
-    const data = await fetch("http://localhost:3000/tasks");
+    const data = await fetch("http://localhost:3001/tasks");
 
     const parsedData = await data.json();
 

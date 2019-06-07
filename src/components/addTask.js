@@ -1,7 +1,6 @@
 import React from "react";
-
 import { Formik, Field, Form, ErrorMessage } from "formik";
-
+import "./form.css";
 const AddFormTask = ({ add }) => {
   return (
     <Formik
@@ -24,10 +23,10 @@ const AddFormTask = ({ add }) => {
         resetForm();
       }}
     >
-      <Form>
-        <Field type="text" name="title" />
+      <Form className="form">
+        <Field className="field" type="text" name="title" />
         <ErrorMessage name="title" component="div" />
-        <Field type="text" name="desc" />
+        <Field className="field" type="text" name="desc" />
         <ErrorMessage name="desc" component="div" />
 
         <button type="submit">Добавить задачу</button>

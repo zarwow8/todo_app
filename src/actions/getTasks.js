@@ -8,7 +8,7 @@ export const getTasks = () => async dispatch => {
     type: GET_TASKS_REQUEST
   });
   try {
-    const data = await fetch("http://localhost:3000/tasks");
+    const data = await fetch("http://localhost:3001/tasks");
     const parsedData = await data.json();
 
     setTimeout(

@@ -10,7 +10,7 @@ export const addTask = task => async dispatch => {
       type: ADD_TASKS_REQUEST
     });
     const dataJson = JSON.stringify(task);
-    const addReq = await fetch("http://localhost:3000/tasks", {
+    const addReq = await fetch("http://localhost:3001/tasks", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -19,7 +19,7 @@ export const addTask = task => async dispatch => {
       body: dataJson
     });
 
-    const data = await fetch("http://localhost:3000/tasks");
+    const data = await fetch("http://localhost:3001/tasks");
     const parsedData = await data.json();
 
     setTimeout(
