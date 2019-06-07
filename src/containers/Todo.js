@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "../components/Task";
 
-const ListTasks = () => {
+const Todo = () => {
   const tasks = [
     {
       id: 1,
@@ -39,4 +39,4 @@ const ListTasks = () => {
   );
 };
 
-export default ListTasks;
+export default Todo;
